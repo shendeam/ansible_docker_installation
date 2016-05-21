@@ -1,0 +1,29 @@
+---
+
+- name: stop container
+  shell: docker stop {{ container_name }}
+  ignore_errors: True
+
+
+- name: remove container
+  shell: docker rm {{ container_name }}
+  ignore_errors: True
+
+
+
+#- name: romove image
+#  shell: docker rmi {{ registry_url }}/{{ image_name }}:{{ tag_name }}
+#  ignore_errors: True
+
+#- name: romove image
+#  shell: docker rmi $(docker images | grep "{{ registry_url }}/{{ image_name }}" | awk "{print $3}")
+#  ignore_errors: True
+
+
+- name: now download the image
+  shell: docker pull {{ registry_url }}/{{ image_name }}:{{ tag_name }}
+
+- name: now run the docker image (no more need for authentication because it's already been pulled)
+  shell: docker run -d -p 9000:80 --name {{ container_name }} {{ registry_url }}/{{ image_name }}:{{ tag_name }}
+
+

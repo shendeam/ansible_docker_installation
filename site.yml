@@ -1,0 +1,16 @@
+---
+
+- name: Installing and configuring Docker 
+  hosts: "nodes"
+  user: root
+  #sudo: yes
+  roles:
+    - { role: docker  }
+
+
+- name: Deploy Wordpress App
+  hosts: "nodes"
+  user: root
+  #sudo: yes
+  roles:
+    - { role: deploy }

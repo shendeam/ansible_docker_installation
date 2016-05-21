@@ -1,0 +1,6 @@
+---
+docker_user: root
+registry_name: amolsh
+image_name: nginx
+tag_name: 1.0
+container_name: nginxapp 
