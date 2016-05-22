@@ -4,7 +4,7 @@
   tasks:
      - name: Check website is up or not
        uri:
-          url="http://localhost:9000"
+          url="http://{{ ansible_eth0.ipv4.address }}:9000"
           return_content=yes
           method=GET
           HEADER_Content-Type="application/json"

@@ -8,7 +8,7 @@
     - { role: docker  }
 
 
-- name: Deploy Wordpress App
+- name: Deploy Nginx App
   hosts: "nodes"
   user: root
   #sudo: yes
